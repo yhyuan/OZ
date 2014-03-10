@@ -1,0 +1,18 @@
+fun {Build D C} 
+  fun {$ X}
+    fun {Help X2 D2 C2}
+      if D2 == nil
+      then "bottom"
+      else if X2 == D2.1 then C2.1 else {Help X2 D2.2 C2.2} end
+      end
+    end
+  in
+    {Help X D C}
+  end
+end
+D = [1 2 3] 
+C = [~1 ~2 ~3]
+F = {Build D C}
+{Browse {F 1}} # Prints ~1
+{Browse {F 3}} # Prints ~3
+{Browse {F 4}} # Prints bottom
